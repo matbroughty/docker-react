@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t matbroughty/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true matbroughty/docker-react npm run test
